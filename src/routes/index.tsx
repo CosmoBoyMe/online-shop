@@ -5,6 +5,7 @@ import { Main } from '../pages/Main/Main'
 
 import { NotFound } from '../pages/NotFound'
 import { ProductDetails } from '../pages/ProductDetails/ProductDetails'
+
 import { SCREENS } from './endpoints'
 
 const AppRoutes: FC = () => (
