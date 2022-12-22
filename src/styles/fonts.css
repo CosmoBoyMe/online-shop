@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../assets/fonts/josefin-sans-thin.woff2') format('woff2'),
+    url('../assets/fonts/josefin-sans-thin.woff') format('woff');
+
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../assets/fonts/josefin-sans-light.woff2') format('woff2'),
+    url('../assets/fonts/josefin-sans-light.woff') format('woff');
+
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../assets/fonts/josefin-sans-regular.woff2') format('woff2'),
+    url('../assets/fonts/josefin-sans-regular.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../assets/fonts/josefin-sans-medium.woff2') format('woff2'),
+    url('../assets/fonts/josefin-sans-medium.woff') format('woff');
+
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Josefin Sans';
+  src: url('../assets/fonts/josefin-sans-bold.woff2') format('woff2'),
+    url('../assets/fonts/josefin-sans-bold.woff') format('woff');
+
+  font-weight: 700;
+  font-style: normal;
+}
