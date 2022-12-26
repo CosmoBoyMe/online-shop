@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { FC } from 'react'
 
+import { Header } from '../components/Header'
+
 const Wrapper = styled.div`
   max-width: 1110px;
   padding: 0 20px;
@@ -27,10 +29,13 @@ const Title = styled.h1`
 
 const NotFound: FC = () => {
   return (
-    <Wrapper>
-      <Text>(404)</Text>
-      <Title>Not found</Title>
-    </Wrapper>
+    <>
+      <Header />
+      <Wrapper>
+        <Text>(404)</Text>
+        <Title>Not found</Title>
+      </Wrapper>
+    </>
   )
 }
 
