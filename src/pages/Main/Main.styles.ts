@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-const Main = styled.main`
+const Main = styled.main``
+
+const Content = styled.div`
   display: flex;
   justify-content: space-between;
   max-width: 1440px;
@@ -9,8 +11,6 @@ const Main = styled.main`
   margin: 0 auto;
   column-gap: 50px;
 `
-
-const Content = styled.div``
 
 const ProductList = styled.div`
   display: grid;
