@@ -1,4 +1,5 @@
 enum SCREENS {
+  MAIN = '/',
   NOT_FOUND = '*',
 }
 
