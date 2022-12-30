@@ -15,8 +15,12 @@ const Content = styled.div`
 const ProductList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+<<<<<<< HEAD
   grid-template-rows: repeat(4, 380px);
   gap: 30px 25px;
+=======
+  gap: 30px 50px;
+>>>>>>> 8e88ef4... feat: create main page
 `
 
 export { Main, Content, ProductList }
