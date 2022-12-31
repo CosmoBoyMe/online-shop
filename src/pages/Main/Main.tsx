@@ -1,5 +1,5 @@
-import { Filter } from '../../components/Filter'
-import { ProductCard } from '../../components/ProductCard'
+import { Filter } from '../../components/Filter/Filter'
+import { ProductCard } from '../../components/ProductCard/ProductCard'
 import * as S from './Main.styles'
 
 const MockProductCard = [

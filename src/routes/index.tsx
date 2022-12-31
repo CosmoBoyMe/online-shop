@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Main } from '../pages/Main'
+import { Main } from '../pages/Main/Main'
 
 import { NotFound } from '../pages/NotFound'
 import { ProductDetails } from '../pages/ProductDetails/ProductDetails'
