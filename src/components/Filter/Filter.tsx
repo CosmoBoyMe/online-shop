@@ -1,7 +1,7 @@
 import * as S from './Filter.styles'
 
-import { CheckboxList } from '../CheckboxList'
-import { DualSlider } from '../DualSlider'
+import { CheckboxList } from '../CheckboxList/CheckboxList'
+import { DualSlider } from '../DualSlider/DualSlider'
 
 const mockCategories = [
   { title: 'laptops', isChecked: false },
