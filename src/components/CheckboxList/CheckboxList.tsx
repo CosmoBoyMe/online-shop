@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { CheckboxItem } from '../CheckboxItem'
+import { CheckboxItem } from '../CheckboxItem/CheckboxItem'
 import * as S from './CheckboxList.styles'
 
 interface ICheckboxList {
