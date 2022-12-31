@@ -8,6 +8,9 @@ const Button = styled.button<{ viewType?: 'light' | 'secondary' }>`
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 300;
+  font-family: 'Josefin Sans', Arial, sans-serif;
 
   ${(props) => {
     switch (props.viewType) {
@@ -25,6 +28,7 @@ const Button = styled.button<{ viewType?: 'light' | 'secondary' }>`
         return css`
           color: var(--white);
           background-color: var(--black);
+          box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.25);
         `
     }
   }}

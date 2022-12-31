@@ -29,13 +29,10 @@ const Title = styled.h1`
 
 const NotFound: FC = () => {
   return (
-    <>
-      <Header />
-      <Wrapper>
-        <Text>(404)</Text>
-        <Title>Not found</Title>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Text>(404)</Text>
+      <Title>Not found</Title>
+    </Wrapper>
   )
 }
 

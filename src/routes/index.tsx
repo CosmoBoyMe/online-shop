@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { NotFound } from '../pages/NotFound'
-import { ProductDetails } from '../pages/ProductDetails'
+import { ProductDetails } from '../pages/ProductDetails/ProductDetails'
 import { SCREENS } from './endpoints'
 
 const AppRoutes: FC = () => (
