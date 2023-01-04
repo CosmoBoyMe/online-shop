@@ -1,55 +1,67 @@
+import { memo, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import * as S from './Filter.styles'
 
 import { CheckboxList } from '../CheckboxList/CheckboxList'
 import { DualSlider } from '../DualSlider/DualSlider'
 
-const mockCategories = [
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: true },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: true },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: true },
-  { title: 'laptops', isChecked: false },
-  { title: 'laptops', isChecked: false },
-]
+import {
+  selectBrands,
+  selectCategories,
+  selectPrice,
+  selectStock,
+} from '../../store/filters/selectors'
 
-const Filter = () => {
+import { updateBrand, updateCategory, updatePrice, updateStock } from '../../store/filters/slice'
+
+const Filter = memo(function Filter() {
+  const dispatch = useDispatch()
+  const companies = useSelector(selectCategories)
+  const brands = useSelector(selectBrands)
+  const price = useSelector(selectPrice)
+  const stock = useSelector(selectStock)
+
+  const onClickCategory = useCallback((name: string) => {
+    dispatch(updateCategory(name))
+  }, [])
+
+  const onClickBrand = (name: string) => {
+    dispatch(updateBrand(name))
+  }
+
+  const onChangePrice = useCallback((newValues: { min: number; max: number }) => {
+    // dispatch(updatePrice(newValues))
+  }, [])
+
+  const onChangeStock = () => {
+    // dispatch(updateStock)
+  }
+
   return (
     <S.Filter>
       <S.FilterCheckboxList>
-        <CheckboxList title='brand' items={mockCategories} />
+        <CheckboxList title='Category' items={companies} onClick={onClickCategory} />
       </S.FilterCheckboxList>
       <S.FilterCheckboxList>
-        <CheckboxList title='Category' items={mockCategories} />
+        <CheckboxList title='brand' items={brands} onClick={onClickBrand} />
       </S.FilterCheckboxList>
       <DualSlider
-        min={40}
-        max={1004}
+        min={price.min}
+        max={price.max}
         title='brand'
         mark='usd'
-        onChange={() => {
-          console.log(1)
-        }}
+        onChange={onChangePrice}
       />
       <DualSlider
         title='Category'
-        min={4}
-        max={54}
+        min={stock.min}
+        max={stock.max}
         mark='pcs'
-        onChange={() => {
-          console.log(1)
-        }}
+        onChange={onChangeStock}
       />
     </S.Filter>
   )
-}
+})
 
 export { Filter }

@@ -1,22 +1,20 @@
 import * as S from './ProductCard.styles'
 
 interface IProductCardProps {
-  data: {
-    imagePath: string
-    brand: string
-    name: string
-    rating: number
-    price: number
-    discount: number
-  }
+  images: string[]
+  brand: string
+  name: string
+  rating: number
+  price: number
+  discount: number
 }
 
 const ProductCard = function ProductCard(props: IProductCardProps) {
-  const { imagePath, brand, name, rating, price, discount } = props.data
+  const { images, brand, name, rating, price, discount } = props
   return (
     <S.ProductCard>
       <S.ImageWrapper>
-        <S.Image src={imagePath} alt={name} />
+        <S.Image src={images[0]} alt={name} />
         <S.Discount>-{discount}%</S.Discount>
       </S.ImageWrapper>
       <S.Description>

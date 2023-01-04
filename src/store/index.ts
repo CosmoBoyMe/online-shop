@@ -1,7 +1,12 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
+import filters from './filters/slice'
+import products from './products/slice'
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    filters,
+    products,
+  },
 })
 
 export type RootState = ReturnType<typeof store.getState>
