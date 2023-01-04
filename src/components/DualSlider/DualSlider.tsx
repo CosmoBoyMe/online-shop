@@ -16,13 +16,13 @@ const DualSlider = memo(function DualSlider({ min, max, title, mark, onChange }:
   const minValueRef = useRef<HTMLInputElement>(null)
   const maxValueRef = useRef<HTMLInputElement>(null)
 
-  const handleChangeMinThumb = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleMinThumbChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = Math.min(Number(event.target.value), maxValue - 1)
     setMinValue(value)
     event.target.value = value.toString()
   }
 
-  const handleChangeMaxThumb = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleMaxThumbChange = (event: ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(Number(event.target.value), minValue + 1)
     setMaxValue(value)
     event.target.value = value.toString()
@@ -42,7 +42,7 @@ const DualSlider = memo(function DualSlider({ min, max, title, mark, onChange }:
           max={max}
           value={minValue}
           ref={minValueRef}
-          onChange={handleChangeMinThumb}
+          onChange={handleMinThumbChange}
         />
         <S.RightThumb
           type='range'
@@ -50,7 +50,7 @@ const DualSlider = memo(function DualSlider({ min, max, title, mark, onChange }:
           max={max}
           value={maxValue}
           ref={maxValueRef}
-          onChange={handleChangeMaxThumb}
+          onChange={handleMaxThumbChange}
         />
         <S.Track />
         <S.Fields>
