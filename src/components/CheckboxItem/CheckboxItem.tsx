@@ -16,7 +16,7 @@ const CheckboxItem = memo(function CheckboxItem({ title, isChecked, onClick }: I
         checked={isChecked}
       />
       <S.CheckboxBox></S.CheckboxBox>
-      <S.CheckboxTitle>{title}</S.CheckboxTitle>
+      <S.CheckboxTitle onClick={() => onClick(title)}>{title}</S.CheckboxTitle>
     </S.CheckboxItem>
   )
 })
