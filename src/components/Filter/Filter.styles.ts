@@ -11,7 +11,8 @@ const Filter = styled.div`
 const FilterCheckboxList = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 310px;
+  align-items: stretch;
+  height: 310px;
 `
 
 export { Filter, FilterCheckboxList }
