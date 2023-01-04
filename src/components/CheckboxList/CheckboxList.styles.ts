@@ -4,6 +4,7 @@ const CheckboxList = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  height: 100%;
 `
 
 const CheckboxListItems = styled.ul`
@@ -12,6 +13,7 @@ const CheckboxListItems = styled.ul`
   row-gap: 15px;
   overflow-y: scroll;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
   ::-webkit-scrollbar {
     width: 5px;
   }
