@@ -8,7 +8,7 @@ const initialState: IProductState = {
   currentProducts: [],
 }
 
-const productSlice = createSlice({
+const productsSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
@@ -24,11 +24,11 @@ const productSlice = createSlice({
     //   console.log('pending')
     // },
     [loadProducts.fulfilled.type]: (state, action) => {
-      productSlice.caseReducers.setProducts(state, action)
+      productsSlice.caseReducers.setProducts(state, action)
     },
     // [loadProducts.rejected.type]: (state, action) => {},
   },
 })
 
-export const { setProducts, setCurrentProducts } = productSlice.actions
-export default productSlice.reducer
+export const { setProducts, setCurrentProducts } = productsSlice.actions
+export default productsSlice.reducer

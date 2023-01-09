@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
-const CheckboxList = styled.div`
+const CheckboxItems = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
   height: 100%;
 `
 
-const CheckboxListItems = styled.ul`
+const List = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 15px;
@@ -23,7 +23,7 @@ const CheckboxListItems = styled.ul`
   }
 `
 
-const CheckboxListTitle = styled.h3`
+const Title = styled.h3`
   text-transform: uppercase;
   font-size: 21px;
   font-weight: 500;
@@ -31,6 +31,10 @@ const CheckboxListTitle = styled.h3`
   margin-bottom: 24px;
 `
 
-const CheckboxListItem = styled.li``
+const ListItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
+`
 
-export { CheckboxList, CheckboxListItems, CheckboxListTitle, CheckboxListItem }
+export { CheckboxItems, List, Title, ListItem }
