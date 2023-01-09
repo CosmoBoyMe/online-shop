@@ -1,11 +1,12 @@
 interface IProduct {
-  name: string
+  title: string
   category: string
   brand: string
   rating: number
   price: number
-  discount: number
+  discountPercentage: number
   images: string[]
+  stock: number
 }
 
 interface IProductState {

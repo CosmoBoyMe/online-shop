@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { IState, ICategory, IBrand, IPrice, IStock } from './types'
+import { IState } from './types'
 import { IProduct } from '../products/types'
-import { setCurrentProducts } from '../products/slice'
 
 const initialState: IState = {
   categories: [],
@@ -10,13 +9,16 @@ const initialState: IState = {
   price: {
     min: 0,
     max: 1,
-    currentValue: null,
+    currentValueMin: 1,
+    currentValueMax: 0,
   },
   stock: {
     min: 0,
     max: 1,
-    currentValue: null,
+    currentValueMin: 0,
+    currentValueMax: 1,
   },
+  searchValue: '',
   status: 'idle',
 }
 
@@ -31,43 +33,61 @@ const filterSlice = createSlice({
         price: {
           min: 0,
           max: 1,
-          currentValue: null,
+          currentValueMin: 0,
+          currentValueMax: 1,
         },
         stock: {
           min: 0,
           max: 1,
-          currentValue: null,
+          currentValueMin: 0,
+          currentValueMax: 1,
         },
+        searchValue: '',
         status: 'idle',
       }
-
       action.payload.reduce((prev, item) => {
-        const { category, brand, price } = item
-        const foundCategory = prev.categories.find((item) => item.name === category)
+        const { category, brand, price, stock } = item
+        const foundCategory = prev.categories.find((item) => item.name === category.toLowerCase())
         if (foundCategory) {
+          foundCategory.currentAmount += 1
           foundCategory.totalAmount += 1
         } else {
           prev.categories.push({
-            name: category,
+            name: category.toLowerCase(),
             isChecked: false,
-            currentAmount: 0,
+            currentAmount: 1,
             totalAmount: 1,
           })
         }
-        const foundBrand = prev.brands.find((item) => item.name === brand)
+        const foundBrand = prev.brands.find((item) => item.name === brand.toLowerCase())
         if (foundBrand) {
+          foundBrand.currentAmount += 1
           foundBrand.totalAmount += 1
         } else {
-          prev.brands.push({ name: brand, isChecked: false, currentAmount: 0, totalAmount: 1 })
+          prev.brands.push({
+            name: brand.toLowerCase(),
+            isChecked: false,
+            currentAmount: 1,
+            totalAmount: 1,
+          })
         }
         if (price > prev.price.max) {
           prev.price.max = price
+          prev.price.currentValueMax = price
         } else if (price < prev.price.min) {
           prev.price.min = price
+          prev.price.currentValueMin = price
+        }
+        if (stock > prev.stock.max) {
+          prev.stock.max = stock
+          prev.stock.currentValueMax = stock
+        } else if (stock < prev.stock.min) {
+          prev.stock.min = stock
+          prev.stock.currentValueMin = stock
         }
         return prev
       }, newState)
-
+      console.log(newState)
       return newState
     },
 
@@ -75,22 +95,33 @@ const filterSlice = createSlice({
       const categories: Record<string, number> = {}
       const brands: Record<string, number> = {}
 
-      action.payload.forEach(({ category, brand }) => {
-        if (categories[category]) {
-          categories[category] += 1
+      action.payload.forEach(({ category, brand, price }) => {
+        const categoryInLowerCase = category.toLowerCase()
+        const brandInLowerCase = brand.toLowerCase()
+        if (categories[categoryInLowerCase]) {
+          categories[categoryInLowerCase] += 1
         } else {
-          categories[category] = 1
+          categories[categoryInLowerCase] = 1
         }
-        if (brands[brand]) {
-          brands[brand] += 1
+        if (brands[brandInLowerCase]) {
+          brands[brandInLowerCase] += 1
         } else {
-          brands[brand] = 1
+          brands[brandInLowerCase] = 1
         }
       })
-
       state.categories.forEach((item) => (item.currentAmount = categories[item.name] ?? 0))
       state.brands.forEach((item) => (item.currentAmount = brands[item.name] ?? 0))
       state.status = 'idle'
+    },
+
+    resetFilters(state) {
+      state.categories.forEach((item) => (item.isChecked = false))
+      state.brands.forEach((item) => (item.isChecked = false))
+      state.price.currentValueMin = state.price.min
+      state.price.currentValueMax = state.price.max
+      state.stock.currentValueMin = state.stock.min
+      state.stock.currentValueMin = state.stock.max
+      state.status = 'change'
     },
 
     updateCategory(state, action: PayloadAction<string>) {
@@ -109,17 +140,27 @@ const filterSlice = createSlice({
       }
     },
 
-    updatePrice(state, action: PayloadAction<IPrice>) {
-      state.price = action.payload
+    updatePrice(state, action: PayloadAction<{ min: number; max: number }>) {
+      state.price.currentValueMin = action.payload.min
+      state.price.currentValueMax = action.payload.max
+      state.status = 'change'
     },
 
-    updateStock(state, action: PayloadAction<IStock>) {
-      state.stock = action.payload
+    setSearchValue(state, action: PayloadAction<string>) {
+      state.searchValue = action.payload
+      state.status = 'change'
+    },
+
+    updateStock(state, action: PayloadAction<{ min: number; max: number }>) {
+      state.stock.currentValueMin = action.payload.min
+      state.stock.currentValueMax = action.payload.max
+      state.status = 'change'
     },
   },
 })
 
 export const {
+  setSearchValue,
   syncFiltersWithProducts,
   updateFilters,
   updateCategory,

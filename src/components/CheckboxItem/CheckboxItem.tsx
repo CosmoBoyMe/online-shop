@@ -9,10 +9,14 @@ interface ICheckboxItem {
 
 const CheckboxItem = memo(function CheckboxItem({ title, isChecked, onClick }: ICheckboxItem) {
   return (
-    <S.CheckboxItem>
-      <S.CheckboxInput type='checkbox' defaultChecked={isChecked} />
+    <S.CheckboxItem onClick={() => onClick(title)}>
+      <S.CheckboxInput
+        onClick={(event) => event.stopPropagation()}
+        type='checkbox'
+        checked={isChecked}
+      />
       <S.CheckboxBox></S.CheckboxBox>
-      <S.CheckboxTitle onClick={() => onClick(title)}>{title}</S.CheckboxTitle>
+      <S.CheckboxTitle>{title}</S.CheckboxTitle>
     </S.CheckboxItem>
   )
 })
