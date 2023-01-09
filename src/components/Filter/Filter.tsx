@@ -66,7 +66,7 @@ const Filter = memo(function Filter() {
       <S.FilterCheckboxItems>
         <CheckboxItems title='brand' items={brands} onClick={onClickBrand} />
       </S.FilterCheckboxItems>
-      {/* <DualSlider
+      <DualSlider
         min={price.min}
         max={price.max}
         currentMinValue={price.currentValueMin}
@@ -74,7 +74,7 @@ const Filter = memo(function Filter() {
         title='Price'
         mark='usd'
         onChange={onChangePrice}
-      /> */}
+      />
       <DualSlider
         title='Stock'
         min={stock.min}
