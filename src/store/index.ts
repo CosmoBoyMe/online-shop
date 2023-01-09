@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 import filters from './filters/slice'
 import products from './products/slice'
 import refinements from './refinement/slice'
+import cart from './cart/slice'
 
 export const store = configureStore({
   reducer: {
     filters,
     products,
     refinements,
+    cart,
   },
 })
 
