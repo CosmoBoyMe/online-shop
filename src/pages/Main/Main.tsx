@@ -53,7 +53,7 @@ const Main = () => {
         <Filter />
         <S.ProductList>
           {currentProducts.map((item) => (
-            <ProductCard key={item.name} {...item} />
+            <ProductCard key={item.id} {...item} />
           ))}
         </S.ProductList>
       </S.Content>

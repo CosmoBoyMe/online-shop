@@ -1,11 +1,15 @@
-interface IProduct {
-  name: string
-  category: string
+type IProduct = {
+  id: number
+  title: string
   brand: string
-  rating: number
-  price: number
-  discount: number
+  category: string
+  description: string
+  discountPercentage: number
   images: string[]
+  price: number
+  rating: number
+  stock: number
+  thumbnail: string
 }
 
 interface IProductState {
