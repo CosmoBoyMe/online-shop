@@ -2,21 +2,43 @@ import { memo } from 'react'
 
 import * as S from './ProductCard.styles'
 
-interface IProductCardProps {
-  images: string[]
-  brand: string
-  title: string
-  rating: number
-  price: number
-  discountPercentage: number
-}
+import { useDispatch } from 'react-redux'
 
-const ProductCard = memo(function ProductCard(props: IProductCardProps) {
+import { addToCart } from '../../store/cart/slice'
+
+import { IProduct } from '../../store/cart/types'
+
+// interface IProductCardProps {
+//   images: string[]
+//   brand: string
+//   name: string
+//   rating: number
+//   price: number
+//   discount: number
+// }
+
+const ProductCard = function ProductCard(props: IProduct) {
   const { images, brand, title, rating, price, discountPercentage } = props
+
+  const dispatch = useDispatch()
+
+  const addToCartFn = (): void => {
+    dispatch(
+      addToCart({
+        id: props.id,
+        title: props.title,
+        category: props.category,
+        images: props.images,
+        price: props.price,
+        totalPrice: props.price,
+        quantity: 1,
+      }),
+    )
+  }
   return (
     <S.ProductCard>
       <S.ImageWrapper>
-        <S.Image src={images[0]} key={images[0]} alt={title} />
+        <S.Image src={images[0]} alt={title} />
         <S.Discount>-{discountPercentage}%</S.Discount>
       </S.ImageWrapper>
       <S.Description>
@@ -30,7 +52,14 @@ const ProductCard = memo(function ProductCard(props: IProductCardProps) {
           </S.Price>
         </S.PriceWrapper>
       </S.Description>
-      <S.Button>add to cart</S.Button>
+      <S.Button
+        onClick={() => {
+          addToCartFn()
+          console.log('added to cart')
+        }}
+      >
+        add to cart
+      </S.Button>
     </S.ProductCard>
   )
 })
