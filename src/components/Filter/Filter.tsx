@@ -23,7 +23,6 @@ import {
   resetFilters,
 } from '../../store/filters/slice'
 import { resetSortType } from '../../store/refinement/slice'
-import { option } from 'yargs'
 
 const Filter = memo(function Filter() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -114,6 +113,18 @@ const Filter = memo(function Filter() {
     }, 1000)
   }, [])
 
+  const handleClickResetFiltersButton = useCallback(() => {
+    navigate(SCREENS.MAIN)
+  }, [])
+
+  const handleClickCopyButton = useCallback(() => {
+    const currentHref = window.location.href
+    navigator.clipboard.writeText(currentHref)
+    setCopyButtonText('copied!')
+    setTimeout(() => {
+      setCopyButtonText('copy-link')
+    }, 1000)
+  }, [])
   return (
     <S.Filter>
       <S.Buttons>

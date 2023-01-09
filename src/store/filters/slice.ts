@@ -43,7 +43,6 @@ const filterSlice = createSlice({
         },
         searchValue: '',
       }
-
       action.payload.reduce((prev, item) => {
         const { category, brand, price, stock } = item
         const foundCategory = prev.categories.find((item) => item.name === category.toLowerCase())
@@ -119,6 +118,16 @@ const filterSlice = createSlice({
       state.stock.currentValueMin = 0
       state.stock.currentValueMax = state.stock.max
       state.searchValue = ''
+    },
+
+    resetFilters(state) {
+      state.categories.forEach((item) => (item.isChecked = false))
+      state.brands.forEach((item) => (item.isChecked = false))
+      state.price.currentValueMin = state.price.min
+      state.price.currentValueMax = state.price.max
+      state.stock.currentValueMin = state.stock.min
+      state.stock.currentValueMin = state.stock.max
+      state.status = 'change'
     },
 
     updateCategory(state, action: PayloadAction<string>) {

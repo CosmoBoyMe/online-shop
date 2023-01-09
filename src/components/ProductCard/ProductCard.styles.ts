@@ -1,22 +1,31 @@
 import styled from 'styled-components'
 
 const ProductCard = styled.div`
+  display: flex;
+  flex-direction: column;
   max-width: 100%;
+  width: 100%;
+  height: 100%;
 `
 
 const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   position: relative;
-  margin-bottom: 20px;
+  max-height: 200px;
+  height: 100%;
+  width: 100%;
 `
 
 const Image = styled.img`
-  display: block;
+  object-fit: contain;
   width: 100%;
-  height: auto;
+  min-height: 100%;
 `
 
 const Discount = styled.span`
   bottom: 0;
+  left: 0;
   position: absolute;
   background-color: var(--red);
   color: white;
@@ -27,17 +36,22 @@ const Discount = styled.span`
 const Description = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
   padding: 10px;
 `
 
 const Brand = styled.p`
+  font-size: 12px;
   text-transform: uppercase;
 `
-const Name = styled.h2``
+const Name = styled.h2`
+  font-size: 20px;
+`
 const Rating = styled.ul``
 
 const PriceWrapper = styled.div`
   display: flex;
+  margin-top: auto;
 `
 
 const OldPrice = styled.span`
@@ -61,6 +75,7 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  margin-top: auto;
 `
 
 export {
