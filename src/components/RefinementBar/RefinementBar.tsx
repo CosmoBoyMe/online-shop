@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 
 import * as S from './RefinementBar.styles'
-// eslint-disable-next-line no-duplicate-imports
 import { sortList, SortTypes } from '../../constants/sortList'
 import { setSortType } from '../../store/refinement/slice'
 import { setSearchValue } from '../../store/filters/slice'
