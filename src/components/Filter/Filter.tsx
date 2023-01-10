@@ -114,6 +114,8 @@ const Filter = memo(function Filter() {
   }, [])
 
   const handleClickResetFiltersButton = useCallback(() => {
+    dispatch(resetFilters())
+    dispatch(resetSortType())
     navigate(SCREENS.MAIN)
   }, [])
 
@@ -125,6 +127,7 @@ const Filter = memo(function Filter() {
       setCopyButtonText('copy-link')
     }, 1000)
   }, [])
+
   return (
     <S.Filter>
       <S.Buttons>
