@@ -112,8 +112,7 @@ const Main = () => {
         <RefinementBar />
         <S.ProductList>
           {currentProducts.map((item) => (
-            <ProductCard key={item.title} {...item} />
-          ))}
+            <ProductCard key={item.id} {...item} />
         </S.ProductList>
       </S.Content>
     </S.Main>
