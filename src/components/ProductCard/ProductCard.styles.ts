@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const ProductCard = styled.div`
@@ -78,7 +79,13 @@ const Button = styled.button`
   margin-top: auto;
 `
 
+const ProductLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+`
+
 export {
+  ProductLink,
   ProductCard,
   ImageWrapper,
   Image,
