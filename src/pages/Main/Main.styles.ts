@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-const Main = styled.main``
-
-const Content = styled.div`
+const Main = styled.main`
   display: flex;
   justify-content: space-between;
   max-width: 1440px;
@@ -12,10 +10,13 @@ const Content = styled.div`
   column-gap: 50px;
 `
 
+const Content = styled.div``
+
 const ProductList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 30px 50px;
+  grid-template-rows: repeat(4, 380px);
+  gap: 30px 25px;
 `
 
 export { Main, Content, ProductList }

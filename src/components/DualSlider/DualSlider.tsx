@@ -5,14 +5,24 @@ import * as S from './DualSlider.styles'
 interface IDualSliderProps {
   readonly min: number
   readonly max: number
+  currentMinValue: number
+  currentMaxValue: number
   readonly title: string
   readonly mark?: string
   onChange: ({ min, max }: { min: number; max: number }) => void
 }
 
-const DualSlider = memo(function DualSlider({ min, max, title, mark, onChange }: IDualSliderProps) {
-  const [minValue, setMinValue] = useState(min)
-  const [maxValue, setMaxValue] = useState(max)
+const DualSlider = memo(function DualSlider({
+  min,
+  max,
+  currentMinValue,
+  currentMaxValue,
+  title,
+  mark,
+  onChange,
+}: IDualSliderProps) {
+  const [minValue, setMinValue] = useState(currentMinValue)
+  const [maxValue, setMaxValue] = useState(currentMaxValue)
   const minValueRef = useRef<HTMLInputElement>(null)
   const maxValueRef = useRef<HTMLInputElement>(null)
 
@@ -29,8 +39,17 @@ const DualSlider = memo(function DualSlider({ min, max, title, mark, onChange }:
   }
 
   useEffect(() => {
-    onChange({ min: minValue, max: maxValue })
-  }, [minValue, maxValue, onChange])
+    setMinValue(currentMinValue)
+  }, [currentMinValue])
+
+  useEffect(() => {
+    setMaxValue(currentMaxValue)
+  }, [currentMaxValue])
+
+  // useEffect(() => {
+  //   console.log(currentMaxValue, maxValue)
+  //   onChange({ min: minValue, max: maxValue })
+  // }, [minValue, maxValue, onChange])
 
   return (
     <S.DualSLider>

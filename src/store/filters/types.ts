@@ -15,13 +15,15 @@ interface IBrand {
 interface IPrice {
   min: number
   max: number
-  currentValue: number | null
+  currentValueMin: number
+  currentValueMax: number
 }
 
 interface IStock {
   min: number
   max: number
-  currentValue: number | null
+  currentValueMin: number
+  currentValueMax: number
 }
 
 interface IState {
@@ -29,6 +31,7 @@ interface IState {
   brands: IBrand[]
   price: IPrice
   stock: IStock
+  searchValue: string
   status: string
 }
 

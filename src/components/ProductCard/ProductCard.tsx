@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import * as S from './ProductCard.styles'
 
 import { useDispatch } from 'react-redux'
@@ -46,7 +48,7 @@ const ProductCard = function ProductCard(props: IProduct) {
         <S.PriceWrapper>
           {!!discountPercentage && <S.OldPrice>${price}</S.OldPrice>}
           <S.Price withDiscount={!!discountPercentage}>
-            ${price - (price / 100) * discountPercentage}
+            ${(price - (price / 100) * discountPercentage).toFixed(2)}
           </S.Price>
         </S.PriceWrapper>
       </S.Description>
@@ -60,6 +62,6 @@ const ProductCard = function ProductCard(props: IProduct) {
       </S.Button>
     </S.ProductCard>
   )
-}
+})
 
 export { ProductCard }
