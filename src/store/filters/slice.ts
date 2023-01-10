@@ -43,6 +43,7 @@ const filterSlice = createSlice({
         },
         searchValue: '',
       }
+
       action.payload.reduce((prev, item) => {
         const { category, brand, price, stock } = item
         const foundCategory = prev.categories.find((item) => item.name === category.toLowerCase())
