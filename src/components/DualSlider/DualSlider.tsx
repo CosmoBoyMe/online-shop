@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, ChangeEvent, memo } from 'react'
+import { useState, useEffect, useRef, ChangeEvent, memo, FormEvent } from 'react'
 
 import * as S from './DualSlider.styles'
 
@@ -46,10 +46,9 @@ const DualSlider = memo(function DualSlider({
     setMaxValue(currentMaxValue)
   }, [currentMaxValue])
 
-  // useEffect(() => {
-  //   console.log(currentMaxValue, maxValue)
-  //   onChange({ min: minValue, max: maxValue })
-  // }, [minValue, maxValue, onChange])
+  useEffect(() => {
+    onChange({ min: minValue, max: maxValue })
+  }, [minValue, maxValue])
 
   return (
     <S.DualSLider>
