@@ -113,6 +113,7 @@ const Main = () => {
         <S.ProductList>
           {currentProducts.map((item) => (
             <ProductCard key={item.id} {...item} />
+          ))}
         </S.ProductList>
       </S.Content>
     </S.Main>
