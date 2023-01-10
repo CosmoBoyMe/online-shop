@@ -67,6 +67,6 @@ const ProductCard = function ProductCard(props: IProduct) {
       </S.ProductLink>
     </S.ProductCard>
   )
-})
+}
 
 export { ProductCard }
