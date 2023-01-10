@@ -62,6 +62,6 @@ const ProductCard = function ProductCard(props: IProduct) {
       </S.Button>
     </S.ProductCard>
   )
-})
+}
 
 export { ProductCard }
