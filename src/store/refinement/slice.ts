@@ -21,8 +21,11 @@ const refinementSlice = createSlice({
     changeViewMode(state) {
       state.isViewModeBig = !state.isViewModeBig
     },
+    resetSortType(state) {
+      state.sortType = null
+    },
   },
 })
 
-export const { setSortType, changeViewMode } = refinementSlice.actions
+export const { setSortType, resetSortType, changeViewMode } = refinementSlice.actions
 export default refinementSlice.reducer

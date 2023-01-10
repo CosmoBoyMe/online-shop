@@ -16,7 +16,7 @@ const ProductCard = memo(function ProductCard(props: IProductCardProps) {
   return (
     <S.ProductCard>
       <S.ImageWrapper>
-        <S.Image src={images[0]} alt={title} />
+        <S.Image src={images[0]} key={images[0]} alt={title} />
         <S.Discount>-{discountPercentage}%</S.Discount>
       </S.ImageWrapper>
       <S.Description>

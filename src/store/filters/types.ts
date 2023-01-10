@@ -32,7 +32,6 @@ interface IState {
   price: IPrice
   stock: IStock
   searchValue: string
-  status: string
 }
 
 export type { ICategory, IBrand, IPrice, IStock, IState }
