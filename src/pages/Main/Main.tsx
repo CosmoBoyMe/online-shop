@@ -133,7 +133,7 @@ const Main = () => {
         <S.ProductList>
           {currentProducts.length === 0 && <h3>product not found</h3>}
           {currentProducts.map((item) => (
-            <ProductCard key={item.title} {...item} />
+            <ProductCard key={item.id} {...item} />
           ))}
         </S.ProductList>
       </S.Content>
