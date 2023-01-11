@@ -17,3 +17,6 @@ server.use(router)
 server.listen(PORT, () => {
   console.log('Server is running')
 })
+
+// eslint-disable-next-line no-undef
+module.exports = server
