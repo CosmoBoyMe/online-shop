@@ -1,7 +1,7 @@
 import { MouseEvent } from 'react'
 
 import styled from 'styled-components'
-import type { RootState } from '../../redux/store'
+import { RootState } from '../../store'
 import { useSelector } from 'react-redux'
 
 import { data } from '../../data/data'
