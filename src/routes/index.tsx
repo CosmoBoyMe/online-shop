@@ -13,6 +13,7 @@ const AppRoutes: FC = () => (
     <Route path={SCREENS.MAIN} element={<Main />} />
     <Route path={SCREENS.CART} element={<Cart />} />
     <Route path={SCREENS.NOT_FOUND} element={<NotFound />} />
+    <Route path={SCREENS.PRODUCT_DETAILS} element={<ProductDetails />} />
   </Routes>
 )
 

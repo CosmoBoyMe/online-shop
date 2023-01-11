@@ -18,9 +18,11 @@ import { RefinementBar } from '../../components/RefinementBar/RefinementBar'
 import * as S from './Main.styles'
 import { selectSortType } from '../../store/refinement/selectors'
 import { SortTypes } from '../../constants/sortList'
+import { selectCart } from '../../store/cart/selectors'
 
 const Main = () => {
   const [searchParams, setSearchParams] = useSearchParams()
+  const cart = useSelector(selectCart)
   const params = useMemo(() => Object.fromEntries([...searchParams]), [searchParams])
   const filters = useSelector(selectFilters)
   const { products, currentProducts } = useSelector(selectProducts)
@@ -124,7 +126,6 @@ const Main = () => {
     dispatch(setCurrentProducts(filteredProductsBySearchValue))
     dispatch(updateFilters(filteredProductsBySearchValue))
   }, [filters, sortType])
-
   return (
     <S.Main>
       <Filter />
@@ -133,7 +134,11 @@ const Main = () => {
         <S.ProductList>
           {currentProducts.length === 0 && <h3>product not found</h3>}
           {currentProducts.map((item) => (
-            <ProductCard key={item.id} {...item} />
+            <ProductCard
+              isProductInCart={!cart.productsInCart.find(({ id }) => id === item.id)}
+              key={item.id}
+              {...item}
+            />
           ))}
         </S.ProductList>
       </S.Content>

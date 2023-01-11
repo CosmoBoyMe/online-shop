@@ -9,7 +9,7 @@ import { data } from '../../data/data'
 import { Button } from '../../components/Button'
 
 const ProductDetailsPreview = () => {
-  const imagePath = useSelector((state: RootState) => state.product.imagePath) || data.images[0]
+  const imagePath = data.images[0]
 
   const onClickAddButton = (event: MouseEvent<HTMLButtonElement>) => {
     console.log(1)

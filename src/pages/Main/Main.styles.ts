@@ -1,10 +1,14 @@
 import styled from 'styled-components'
 
-const Main = styled.main``
+const Main = styled.main`
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+`
 
 const Content = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   max-width: 1440px;
   width: 100%;
   padding: 20px;

@@ -10,17 +10,20 @@ import { IProduct } from '../../store/cart/types'
 
 import { Link } from 'react-router-dom'
 
-// interface IProductCardProps {
-//   images: string[]
-//   brand: string
-//   name: string
-//   rating: number
-//   price: number
-//   discount: number
-// }
+interface IProductCardProps {
+  images: string[]
+  category: string
+  id: number
+  brand: string
+  title: string
+  rating: number
+  price: number
+  discountPercentage: number
+  isProductInCart: boolean
+}
 
-const ProductCard = function ProductCard(props: IProduct) {
-  const { images, brand, title, rating, price, discountPercentage } = props
+const ProductCard = function ProductCard(props: IProductCardProps) {
+  const { images, brand, title, rating, price, discountPercentage, isProductInCart } = props
 
   const dispatch = useDispatch()
 
@@ -55,15 +58,26 @@ const ProductCard = function ProductCard(props: IProduct) {
             </S.Price>
           </S.PriceWrapper>
         </S.Description>
-        <S.Button
-          type='button'
-          onClick={(event) => {
-            event.preventDefault()
-            addToCartFn()
-          }}
-        >
-          add to cart
-        </S.Button>
+
+        {isProductInCart ? (
+          <S.Button
+            type='button'
+            onClick={(event) => {
+              event.preventDefault()
+              addToCartFn()
+            }}
+          >
+            add to cart
+          </S.Button>
+        ) : (
+          <S.Button
+            onClick={(event) => {
+              event.preventDefault()
+            }}
+          >
+            drop from cart
+          </S.Button>
+        )}
       </S.ProductLink>
     </S.ProductCard>
   )
