@@ -113,21 +113,6 @@ const Filter = memo(function Filter() {
     }, 1000)
   }, [])
 
-  const handleClickResetFiltersButton = useCallback(() => {
-    dispatch(resetFilters())
-    dispatch(resetSortType())
-    navigate(SCREENS.MAIN)
-  }, [])
-
-  const handleClickCopyButton = useCallback(() => {
-    const currentHref = window.location.href
-    navigator.clipboard.writeText(currentHref)
-    setCopyButtonText('copied!')
-    setTimeout(() => {
-      setCopyButtonText('copy-link')
-    }, 1000)
-  }, [])
-
   return (
     <S.Filter>
       <S.Buttons>

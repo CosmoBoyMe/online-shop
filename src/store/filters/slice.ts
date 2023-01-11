@@ -121,16 +121,6 @@ const filterSlice = createSlice({
       state.searchValue = ''
     },
 
-    resetFilters(state) {
-      state.categories.forEach((item) => (item.isChecked = false))
-      state.brands.forEach((item) => (item.isChecked = false))
-      state.price.currentValueMin = 0
-      state.price.currentValueMax = state.price.max
-      state.stock.currentValueMin = 0
-      state.stock.currentValueMax = state.stock.max
-      state.searchValue = ''
-    },
-
     updateCategory(state, action: PayloadAction<string>) {
       const currentCategory = state.categories.find(({ name }) => name === action.payload)
       if (currentCategory) {
